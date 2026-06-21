@@ -18,6 +18,7 @@ The voting process follows a strict state machine defined by the `WorkflowStatus
 ## Project Structure
 
 - `contracts/Voting.sol`: The Solidity voting contract.
+- `test/Voting.ts`: The unit test suite using Mocha, Chai, and Ethers.
 - `scripts/run-voting.ts`: A script to run the contract's lifecycle end-to-end on a simulated network.
 - `ignition/modules/Voting.ts`: Hardhat Ignition module to deploy the contract and perform all steps of the voting flow.
 - `hardhat.config.ts`: Configuration file defining networks (including the simulated Optimism chain `hardhatOp`).
@@ -51,6 +52,28 @@ To run the Hardhat Ignition module which executes the entire deployment and setu
 ```shell
 npx hardhat ignition deploy ignition/modules/Voting.ts --network localhost --reset
 ```
+
+### 4. Run Unit Tests
+
+We have implemented a comprehensive unit test suite in [test/Voting.ts](file:///Users/sleede/apps/alyra-voting-projet/test/Voting.ts) using Mocha, Chai, and Ethers. The tests use `beforeEach` hooks for full state isolation.
+
+To run the entire unit test suite:
+
+```shell
+npm test
+```
+*(Alternatively: `npx hardhat test`)*
+
+### 5. Check Test Coverage
+
+The unit test suite achieves **100% statement and line coverage** on the [Voting](file:///Users/sleede/apps/alyra-voting-projet/contracts/Voting.sol) contract. To run the tests and generate a coverage report:
+
+```shell
+npm run coverage
+```
+*(Alternatively: `npx hardhat test --coverage`)*
+
+This saves an interactive HTML coverage report to the `coverage/html` directory.
 
 ---
 
